@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.yunapi.controller;
 
-import com.example.demo.entity.Member;
-import com.example.demo.service.BasicService;
+import com.yunapi.entity.Member;
+import com.yunapi.service.BasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

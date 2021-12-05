@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.yunapi.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -22,6 +22,9 @@ public class Member {
 
     @Column(name = "username")
     private String username;
+
+    @Column(name = "phone")
+    private String phone;
 
 
 }

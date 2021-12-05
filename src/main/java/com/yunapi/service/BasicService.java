@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.yunapi.service;
 
-import com.example.demo.entity.Member;
-import com.example.demo.repository.BasicRepository;
+import com.yunapi.entity.Member;
+import com.yunapi.repository.BasicRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
