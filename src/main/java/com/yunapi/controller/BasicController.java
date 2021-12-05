@@ -14,11 +14,6 @@ public class BasicController {
     @Autowired
     BasicService basicService;
 
-    @GetMapping("/")
-    public String hello(){
-        return "Hello World!";
-    }
-
 
     @GetMapping("/member")
     public List<Member> memberList(){

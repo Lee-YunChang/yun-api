@@ -24,6 +24,8 @@ public class WebSecurityCofig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/v1/**", "/token", "/token", "/healthcheck","/swagger-ui.html").permitAll()
                 .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/swagger-ui.html", true)
+                .and()
                 .csrf().disable();
     }
 
