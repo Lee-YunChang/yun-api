@@ -9,4 +9,6 @@ public interface BasicRepository extends JpaRepository<Member, Long> {
 	
 	List<Member> findAll();
 
+	Member findById(long id);
+
 }

@@ -1,9 +1,6 @@
 package com.yunapi.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -26,5 +23,11 @@ public class Member {
     @Column(name = "phone")
     private String phone;
 
+
+    @Builder
+    public  Member (String username, String phone){
+        this.username = username;
+        this.phone = phone;
+    }
 
 }
