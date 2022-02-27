@@ -26,26 +26,27 @@ public class BasicService {
         return basicRepository.findById(id);
     }
 
-    public void save(MemberDto memberDto) {
+    public int save(MemberDto memberDto) {
 
         Member.MemberBuilder builder = Member.builder();
 
         builder.phone(memberDto.getPhone());
         builder.username(memberDto.getUsername());
 
-        basicRepository.save(builder.build());
+       return basicRepository.save(builder.build()) != null ? 1 : 0;
     }
 
-    public void delete(long id) {
-        basicRepository.deleteById(id);
+    public int delete(long id) {
+      // return basicRepository.deleteById(id) != null ? 1: 0;
+        return 0;
     }
 
-    public void update(long id, MemberDto memberDto) {
+    public int update(long id, MemberDto memberDto) {
 
         Member member = basicRepository.findById(id);
 
         member.setPhone(memberDto.getPhone());
         member.setUsername(memberDto.getUsername());
-        basicRepository.save(member);
+       return basicRepository.save(member) != null ? 1 : 0;
     }
 }

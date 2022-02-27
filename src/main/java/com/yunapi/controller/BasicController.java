@@ -30,19 +30,19 @@ public class BasicController {
     }
 
     @PostMapping("/save")   //Save
-    public void save(@RequestBody MemberDto memberDto){
+    public ResponseEntity<?> save(@RequestBody MemberDto memberDto){
 
-        basicService.save(memberDto);
+        return ResponseEntity.ok().body(basicService.save(memberDto));
     }
 
     @PostMapping("/delete/{id}")  //Delete
-    public void delete(@PathVariable("id") long id){
-        basicService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable("id") long id){
+       return  ResponseEntity.ok().body(basicService.delete(id));
     }
 
     @PostMapping("/update/{id}")    //Update
-    public void update(@PathVariable("id") long id,@RequestBody MemberDto memberDto){
-        basicService.update(id,memberDto);
+    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody MemberDto memberDto){
+       return ResponseEntity.ok().body(basicService.update(id,memberDto));
     }
 
 }
