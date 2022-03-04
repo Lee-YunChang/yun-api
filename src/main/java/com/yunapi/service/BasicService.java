@@ -33,7 +33,8 @@ public class BasicService {
         builder.phone(memberDto.getPhone());
         builder.username(memberDto.getUsername());
 
-       return basicRepository.save(builder.build()) != null ? 1 : 0;
+       //return basicRepository.save(builder.build()) != null ? 1 : 0;
+        return 0;
     }
 
     public int delete(long id) {
@@ -47,6 +48,7 @@ public class BasicService {
 
         member.setPhone(memberDto.getPhone());
         member.setUsername(memberDto.getUsername());
-       return basicRepository.save(member) != null ? 1 : 0;
+       //return basicRepository.save(member) != null ? 1 : 0;
+        return 0;
     }
 }

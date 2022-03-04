@@ -22,7 +22,8 @@ import java.time.LocalDateTime;
 public class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
     private Long id;
 
     private String itemName;
@@ -31,7 +32,6 @@ public class Item {
 
     private Long itemNumber;
 
-    @Column(name="del_yn")
     private String delYn;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
