@@ -34,6 +34,8 @@ public class ItemDetail {
 
     private String color;
 
+    private Integer item_inventory;
+
     private String status;
 
     private String delYn;
@@ -51,4 +53,10 @@ public class ItemDetail {
         this.createTimestamp = Timestamp.valueOf(LocalDateTime.now());
         this.delYn = "N";
     }
+
+    @PreUpdate
+    protected void preUpdate() {
+        this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
+    }
+
 }

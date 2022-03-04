@@ -18,7 +18,7 @@ public class OpenApiConfig {
 	@Bean
 	public OpenAPI openAPI(@Value("${yun-api.version}") String appVersion,
 			@Value("${yun-api.url}") String url, @Value("${spring.profiles.active}") String active) {
-		Info info = new Info().title("befin API v2 - " + active).version(appVersion)
+		Info info = new Info().title("Yun API - " + active).version(appVersion)
 				.description("yun API 입니다.")
 				.termsOfService("http://swagger.io/terms/")
 				.contact(new Contact().name("yun").url("https://www.yun.co.kr").email("dbsckd512@naver.co.kr"))

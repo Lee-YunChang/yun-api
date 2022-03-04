@@ -47,4 +47,10 @@ public class Item {
         this.createTimestamp = Timestamp.valueOf(LocalDateTime.now());
         this.delYn = "N";
     }
+
+    @PreUpdate
+    protected void preUpdate() {
+        this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
+    }
+
 }
