@@ -1,4 +1,4 @@
-package com.yunapi.dto;
+package com.yunapi.domain.dto;
 
 
 import lombok.Getter;

@@ -1,12 +1,10 @@
 package com.yunapi.service;
 
-import com.yunapi.dto.MemberDto;
+import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.entity.Member;
 import com.yunapi.repository.BasicRepository;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

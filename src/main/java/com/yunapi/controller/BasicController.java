@@ -1,19 +1,19 @@
 package com.yunapi.controller;
 
-import com.yunapi.dto.MemberDto;
+import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.entity.Member;
 import com.yunapi.service.BasicService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 public class BasicController {
 
-    @Autowired
-    BasicService basicService;
+    private final  BasicService basicService;
 
 
     @GetMapping("/memberList")  //List select
