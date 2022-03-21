@@ -36,7 +36,7 @@ public class ItemController {
     }
 
     @GetMapping(value = "/{id}")    //Id로 select
-    public ResponseEntity<Member> findById(@PathVariable("id") long id){
+    public ResponseEntity<Item> findById(@PathVariable("id") long id){
         Item item  = itemService.findById(id);
         return ResponseEntity.ok().body(item);
     }
