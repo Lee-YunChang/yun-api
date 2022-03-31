@@ -1,13 +1,11 @@
-package com.yunapi.controller.item;
+package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDto;
 import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.domain.search.ItemSearch;
 import com.yunapi.entity.Item;
-import com.yunapi.entity.Member;
-import com.yunapi.service.item.ItemService;
+import com.yunapi.service.api.ItemService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

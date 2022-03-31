@@ -60,8 +60,6 @@ public class User {
 	
 	private String ci;
 	
-	private String di;
-	
 	private String uuid;
 	
 	private String deviceOs;
@@ -88,7 +86,7 @@ public class User {
 
 	@Builder
 	public User(String name, String email, String birthDate, String sex, String securityCode, String phoneNumber, String status,
-                String pushYn, String tokenKey, String appVersion, String ci, String di, String uuid, String deviceOs,
+                String pushYn, String tokenKey, String appVersion, String ci, String uuid, String deviceOs,
                 Integer biometrics, String debug, String recomm, String recomm2) {
 
 		this.name = name;
@@ -102,7 +100,6 @@ public class User {
 		this.tokenKey = tokenKey;
 		this.appVersion = appVersion;
 		this.ci = ci;
-		this.di = di;
 		this.uuid = uuid;
 		this.deviceOs = deviceOs;
 		this.biometrics = biometrics;

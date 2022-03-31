@@ -1,4 +1,4 @@
-package com.yunapi.service.item;
+package com.yunapi.service.api;
 
 import com.yunapi.repository.ItemPurchaseRepository;
 import lombok.RequiredArgsConstructor;

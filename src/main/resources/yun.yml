@@ -1,9 +1,6 @@
 yun-api:
   version: '1.0.0'
   url: 'http://localhost:8080'
-  #  kingcrab:
-  #    api-url: http://10.27.10.10:1541
-  #    base-path: /kingcrab
   token:
     typ: JWT
     alg: HS256

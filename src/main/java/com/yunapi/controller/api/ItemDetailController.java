@@ -1,7 +1,6 @@
-package com.yunapi.controller.item;
+package com.yunapi.controller.api;
 
-import com.yunapi.repository.ItemDetailRepository;
-import com.yunapi.service.item.ItemDetailService;
+import com.yunapi.service.api.ItemDetailService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
