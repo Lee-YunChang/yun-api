@@ -99,7 +99,7 @@ public class UserService {
         user.setBirthDate(value.getBirthDate());
         user.setName(Pattern.compile("[가-힣]+").matcher(value.getName()).find()
                 ? value.getName().replaceAll("[^a-zA-Z0-9가-힣]", "") : value.getName().trim());
-        user.setPhoneNumber(AESCipher.decrypt2(value.getPhoneNumber(), value.getUuid()));
+        user.setPhoneNumber(value.getPhoneNumber());
         user.setEmail(value.getEmail());
         user.setUuid(value.getUuid());
         user.setCi(value.getCi());

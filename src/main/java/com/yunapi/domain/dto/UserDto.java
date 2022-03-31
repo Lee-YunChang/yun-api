@@ -20,7 +20,6 @@ public class UserDto {
     private String ci;
     private String uuid;
     private String deviceOs;
-    private int biometrics;
     private String debug;
     private String recomm;
     private String recomm2;
@@ -40,7 +39,6 @@ public class UserDto {
         this.ci = u.getCi();
         this.uuid = u.getUuid();
         this.deviceOs = u.getDeviceOs();
-        this.biometrics = u.getBiometrics();
         this.debug = u.getDebug();
         this.recomm = u.getRecomm();
         this.recomm2 = u.getRecomm2();

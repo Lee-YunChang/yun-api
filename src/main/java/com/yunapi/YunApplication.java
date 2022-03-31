@@ -5,14 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class DemoApplication extends SpringBootServletInitializer {
+public class YunApplication extends SpringBootServletInitializer {
 
 	static {
 		System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/yun.yml");
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(YunApplication.class, args);
 	}
 
 }

@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Table(name = "item")
 @Entity
 @DynamicUpdate
 @DynamicInsert

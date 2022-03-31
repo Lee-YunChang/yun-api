@@ -1,8 +1,6 @@
 package com.yunapi.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.eclipse.jdt.core.compiler.InvalidInputException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +75,7 @@ public class AESCipher {
 	}
 
 	public static String decrypt2(String data,String uuid)  {
-		if(org.apache.commons.lang3.StringUtils.isBlank(data))
+		if(StringUtils.isBlank(data))
 			return data;
 
 		try {

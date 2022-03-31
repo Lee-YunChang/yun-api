@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter@Setter
-@Table(name = "member")
 @Entity
 @DynamicUpdate@DynamicInsert
 public class Member {

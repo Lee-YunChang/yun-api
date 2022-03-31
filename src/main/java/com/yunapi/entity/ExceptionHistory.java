@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -17,8 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ExceptionHistory implements Serializable {
-    private static final long serialVersionUID = 7019468621451017369L;
+public class ExceptionHistory {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
