@@ -109,7 +109,7 @@ public class UserService {
         user.setDeviceOs(device);
 
         try {
-            user.setSecurityCode(CutEncryption.getEncSHA256(AESCipher.decrypt2(value.getPw(), value.getUuid())));
+            user.setSecurityCode(CutEncryption.getEncSHA256(value.getPw()));
             user.setTokenKey(CutEncryption.getEncSHA256(value.getEmail() + AuthCode.SecurityCode()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class UserService {
         User user = null;
         if (StringUtils.isNotBlank(value.getEmail()) && StringUtils.isNotBlank(value.getSecurityCode()) && StringUtils.isNotBlank(value.getUuid())) {
             // email로 로그인
-            String securityCode = AESCipher.decrypt2(value.getSecurityCode(), value.getUuid());
+            String securityCode = value.getSecurityCode();
             user = userRepository.findTopBySecurityCodeAndEmail(CutEncryption.getEncSHA256(securityCode), value.getEmail())
                     .orElseThrow(() -> new InvalidInputException("email 또는 비밀번호가 일치하지 않습니다"));
             user.setDeviceOs(device);

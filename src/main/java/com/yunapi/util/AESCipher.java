@@ -1,15 +1,18 @@
 package com.yunapi.util;
 
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
-import java.util.Base64.Decoder;
-import java.util.Base64.Encoder;
+
+import com.yunapi.exception.InvalidInputException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class AESCipher {
@@ -17,7 +20,7 @@ public class AESCipher {
 	static Logger logger = LoggerFactory.getLogger(AESCipher.class);
 	static Encoder encoder = Base64.getEncoder();
 	static Decoder decoder = Base64.getDecoder();
-	
+
 	private static String ALGORITHM = "AES/CBC/PKCS5Padding";
 	private static SecretKeySpec KEY = null;
 	private static IvParameterSpec IV = null;
@@ -25,7 +28,7 @@ public class AESCipher {
 	static {
 		try {
 			KEY = new SecretKeySpec(System.getenv("ENCRYPTION_KEY").getBytes(), "AES");
-			IV = new IvParameterSpec(System.getenv("ENCRYPTION_IV").getBytes());			
+			IV = new IvParameterSpec(System.getenv("ENCRYPTION_IV").getBytes());
 		} catch(Exception e) {
 			logger.error("ENCRYPTION_KEY 또는 ENCRYPTION_IV 환경변수가 설정되어있지 않습니다.");
 		}
@@ -47,7 +50,7 @@ public class AESCipher {
 	public static String decrypt(String data) {
 		if(StringUtils.isBlank(data))
 			return data;
-		
+
 		try {
 			final Cipher c = Cipher.getInstance(ALGORITHM);
 			c.init(Cipher.DECRYPT_MODE, KEY, IV);
@@ -58,7 +61,7 @@ public class AESCipher {
 		}
 	}
 
-	public static String encrypt2(String data,String uuid)  {
+	public static String encrypt2(String data,String uuid) {
 		if(data == null)
 			return null;
 		try {
@@ -70,12 +73,12 @@ public class AESCipher {
 			return encryptedData;
 		} catch (Exception e) {
 			System.out.println(e);
-			throw new RuntimeException(e);
+			throw new InvalidInputException(String.format("암호화 중 에러가 발생되었습니다. : %s", e.getMessage()));
 		}
 	}
 
-	public static String decrypt2(String data,String uuid)  {
-		if(StringUtils.isBlank(data))
+	public static String decrypt2(String data,String uuid) {
+		if(org.apache.commons.lang3.StringUtils.isBlank(data))
 			return data;
 
 		try {
@@ -87,7 +90,7 @@ public class AESCipher {
 			return decryptedData;
 		} catch (Exception e) {
 			System.out.println(e);
-			throw new RuntimeException(e);
+			throw new InvalidInputException(String.format("복호화 중 에러가 발생되었습니다. : %s", e.getMessage()));
 		}
 	}
 
