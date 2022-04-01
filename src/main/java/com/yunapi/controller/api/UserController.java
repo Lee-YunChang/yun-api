@@ -2,6 +2,8 @@ package com.yunapi.controller.api;
 
 import com.yunapi.domain.request.UserJoinRequest;
 import com.yunapi.domain.request.UserLoginRequest;
+import com.yunapi.domain.request.UserLogoutRequest;
+import com.yunapi.domain.response.BaseResponse;
 import com.yunapi.domain.response.UserJoinResponse;
 import com.yunapi.domain.response.UserResponse;
 import com.yunapi.service.UserService;
@@ -65,5 +67,19 @@ public class UserController {
         }
         value.setUserIp(userIp);
         return userService.login(value);
+    }
+
+    @Operation(summary="회원 로그아웃", description="value keys: id(user id)")
+    @PostMapping(value ="/logout")
+    private BaseResponse logout(@RequestBody UserLogoutRequest value) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String userIp = request.getHeader("X-FORWARDED-FOR");
+        if (userIp == null) {
+            userIp = request.getRemoteAddr();
+        } else {
+            userIp = "";
+        }
+        value.setUserIp(userIp);
+        return userService.logout(value);
     }
 }

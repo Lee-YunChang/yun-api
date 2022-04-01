@@ -2,6 +2,8 @@ package com.yunapi.service;
 
 import com.yunapi.domain.request.UserJoinRequest;
 import com.yunapi.domain.request.UserLoginRequest;
+import com.yunapi.domain.request.UserLogoutRequest;
+import com.yunapi.domain.response.BaseResponse;
 import com.yunapi.domain.response.UserJoinResponse;
 import com.yunapi.domain.response.UserResponse;
 import com.yunapi.entity.ExceptionHistory;
@@ -133,9 +135,6 @@ public class UserService {
     public UserResponse login(UserLoginRequest value){
 
         UserResponse response = new UserResponse();
-        response.setResult(MessageUtils.FAIL);
-        response.setReason(MessageUtils.INCORRECT_USERID_OR_PASSWORD);
-
         String device = StringUtils.isNotBlank(value.getDevice()) ? value.getDevice() : "android";
         User user = null;
         if (StringUtils.isNotBlank(value.getEmail()) && StringUtils.isNotBlank(value.getSecurityCode()) && StringUtils.isNotBlank(value.getUuid())) {
@@ -172,6 +171,29 @@ public class UserService {
                 user.setUuid(value.getUuid());
             }
             userRepository.save(user);
+        }else{
+            response.setResult(MessageUtils.FAIL);
+            response.setReason(MessageUtils.INCORRECT_USERID_OR_PASSWORD);
+        }
+        return response;
+    }
+
+    @Transactional
+    public BaseResponse logout(UserLogoutRequest value) {
+
+        BaseResponse response = new BaseResponse();
+
+        if (value.getId() != null && value.getId() > 0) {
+            User user = userRepository.findById(value.getId()).orElse(null);
+            if (user != null) {
+                user.setUuid(null);
+                user.setUpdateTimestamp(Timestamp.valueOf(LocalDateTime.now()));
+                response.setReason("");
+                response.setResult(MessageUtils.SUCCESS);
+            }
+        }else{
+            response.setResult(MessageUtils.FAIL);
+            response.setReason(MessageUtils.INCORRECT_USERID_OR_PASSWORD);
         }
         return response;
     }
