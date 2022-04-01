@@ -1,5 +1,6 @@
 package com.yunapi.service;
 
+import com.yunapi.domain.dto.UserDto;
 import com.yunapi.domain.request.UserJoinRequest;
 import com.yunapi.domain.request.UserLoginRequest;
 import com.yunapi.domain.request.UserLogoutRequest;
@@ -182,19 +183,23 @@ public class UserService {
     public BaseResponse logout(UserLogoutRequest value) {
 
         BaseResponse response = new BaseResponse();
+        User user = userRepository.findById(value.getId()).orElse(null);
 
-        if (value.getId() != null && value.getId() > 0) {
-            User user = userRepository.findById(value.getId()).orElse(null);
-            if (user != null) {
-                user.setUuid(null);
-                user.setUpdateTimestamp(Timestamp.valueOf(LocalDateTime.now()));
-                response.setReason("");
-                response.setResult(MessageUtils.SUCCESS);
-            }
+        if (user != null) {
+            user.setUuid(null);
+            user.setUpdateTimestamp(Timestamp.valueOf(LocalDateTime.now()));
+            response.setReason("");
+            response.setResult(MessageUtils.SUCCESS);
         }else{
             response.setResult(MessageUtils.FAIL);
             response.setReason(MessageUtils.INCORRECT_USERID_OR_PASSWORD);
         }
+
         return response;
     }
+
+    public Optional<UserDto> findById(long id) {
+        return  userRepository.findById(id).map(f -> new UserDto(f));
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.yunapi.controller.api;
 
+import com.yunapi.domain.dto.UserDto;
 import com.yunapi.domain.request.UserJoinRequest;
 import com.yunapi.domain.request.UserLoginRequest;
 import com.yunapi.domain.request.UserLogoutRequest;
@@ -11,14 +12,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.jdt.core.compiler.InvalidInputException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Tag(name = "user", description = "회원 (사용자 및 로그인)")
 @RestController
@@ -81,5 +81,15 @@ public class UserController {
         }
         value.setUserIp(userIp);
         return userService.logout(value);
+    }
+
+    @Operation(summary="단일회원 상세정보 조회", description="value keys: id(user id)")
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> findById(@PathVariable("id") long id) {
+        Optional<UserDto> oUser = userService.findById(id);
+        if(oUser.isPresent()) {
+            return ResponseEntity.ok().body(oUser.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 }
