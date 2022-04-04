@@ -56,7 +56,6 @@ public class UserController {
     @Operation(summary = "회원 로그인",
             description="<h3>`email && securityCode` 또는 `id && token`을 이용하여 로그인합니다.</h3>"
                     + "<h4>uuid: uuid가 없는 경우에는 32자 이상의 특정 값이라도 반드시 보내줘야합니다.</h4>"
-                    + "<h4>securityCode: 비밀번호 (<b>uuid를 이용하여 AES 암호화</b>한 값)</h4>"
                     + "<h4>만일, 다른기기로 로그인을 하고싶다면 방법3을 이용해야합니다. (방법 1을 이용할 경우, 기존에 저장된 uuid와 일치하지 않을 경우 로그인이 되지 않습니다.)</h4>"
                     + "<h4>※ 방법 2에서 loginType이 4가 아닌경우 tokenKey를 갱신합니다. 새로 저장하여 이용해주세요.</h4>"
                     + "<ul><li>방법 1: email, securityCode, uuid, device(iOS 또는 android)</li>"
