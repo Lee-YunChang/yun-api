@@ -7,17 +7,23 @@ import com.yunapi.domain.request.UserLogoutRequest;
 import com.yunapi.domain.response.BaseResponse;
 import com.yunapi.domain.response.UserJoinResponse;
 import com.yunapi.domain.response.UserResponse;
+import com.yunapi.domain.search.UserSearch;
 import com.yunapi.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.jdt.core.compiler.InvalidInputException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 @Tag(name = "user", description = "회원 (사용자 및 로그인)")
@@ -34,7 +40,7 @@ public class UserController {
                     + "<li>foreigner(외국인 여부): L(내국인), F(외국인)</li>"
                     + "<li>sex(성별): M(남자), F(여자)</li>"
                     + "<li>uuid: uuid가 없는 경우에는 32자 이상의 특정 값이라도 반드시 보내줘야합니다.</li></ul>")
-    @PostMapping("")
+    @PostMapping("/save")
     public UserJoinResponse save(@RequestBody UserJoinRequest value) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String userIp = request.getHeader("X-FORWARDED-FOR");
@@ -91,5 +97,14 @@ public class UserController {
             return ResponseEntity.ok().body(oUser.get());
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @Operation(summary="여러 회원 목록 조회")
+    @GetMapping(value = "")
+    public ResponseEntity<List<UserDto>> selectUsers(@ModelAttribute("searchValue") UserSearch userSearch,
+                                                      @RequestParam(defaultValue="0") int page,
+                                                      @RequestParam(defaultValue="10") int size) {
+        Pageable pageable =  PageRequest.of(page, size, Sort.Direction.DESC,"id");
+      return ResponseEntity.ok().body(userService.selectUsers(userSearch,pageable));
     }
 }

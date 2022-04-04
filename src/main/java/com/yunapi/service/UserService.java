@@ -7,6 +7,7 @@ import com.yunapi.domain.request.UserLogoutRequest;
 import com.yunapi.domain.response.BaseResponse;
 import com.yunapi.domain.response.UserJoinResponse;
 import com.yunapi.domain.response.UserResponse;
+import com.yunapi.domain.search.UserSearch;
 import com.yunapi.entity.ExceptionHistory;
 import com.yunapi.entity.User;
 import com.yunapi.exception.InvalidInputException;
@@ -15,14 +16,17 @@ import com.yunapi.repository.UserRepository;
 import com.yunapi.util.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -202,4 +206,8 @@ public class UserService {
         return  userRepository.findById(id).map(f -> new UserDto(f));
     }
 
+    public List<UserDto> selectUsers(UserSearch search, Pageable pageable) {
+        return userRepository.findAll(search.toSpecification(), pageable).getContent()
+                .stream().map(UserDto::new).collect(Collectors.toList());
+    }
 }
