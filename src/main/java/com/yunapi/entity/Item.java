@@ -30,7 +30,7 @@ public class Item {
 
     private Long itemPrice;
 
-    private Long itemNumber;
+    private String itemNumber;
 
     private String delYn;
 

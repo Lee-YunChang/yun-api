@@ -3,10 +3,14 @@ package com.yunapi.controller.api;
 import com.yunapi.domain.dto.ItemDto;
 import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.domain.search.ItemSearch;
+import com.yunapi.domain.search.UserSearch;
 import com.yunapi.entity.Item;
 import com.yunapi.service.api.ItemService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +31,12 @@ public class ItemController {
     }
 
     @GetMapping(value = "")  //List select
-    public ResponseEntity<List<ItemDto>> itemList(){
-        List<ItemDto> itemList = itemService.itemList();
+    public ResponseEntity<List<ItemDto>> itemList(@ModelAttribute("searchValue") ItemSearch itemSearch,
+            @RequestParam(defaultValue="0") int page,@RequestParam(defaultValue="10") int size){
 
+        Pageable pageable =  PageRequest.of(page, size, Sort.Direction.DESC,"id");
+
+        List<ItemDto> itemList = itemService.itemList();
         return  ResponseEntity.ok().body(itemList);
     }
 
@@ -45,12 +52,12 @@ public class ItemController {
         return ResponseEntity.ok().body(itemService.save(memberDto));
     }
 
-    @PostMapping(value = "/delete/{id}")  //Delete
+    @DeleteMapping(value = "/delete/{id}")  //Delete
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         return  ResponseEntity.ok().body(itemService.delete(id));
     }
 
-    @PostMapping(value = "/update/{id}")    //Update
+    @PatchMapping(value = "/update/{id}")    //Update
     public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody MemberDto memberDto){
         return ResponseEntity.ok().body(itemService.update(id,memberDto));
     }

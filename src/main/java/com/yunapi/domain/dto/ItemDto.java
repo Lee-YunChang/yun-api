@@ -13,7 +13,7 @@ public class ItemDto {
     private Long id;
     private String itemName;
     private Long itemPrice;
-    private Long itemNumber;
+    private String itemNumber;
     private String delYn;
     private String createTimestamp;
     private String updateTimestamp;

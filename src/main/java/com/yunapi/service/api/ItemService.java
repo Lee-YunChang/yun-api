@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -22,7 +23,7 @@ public class ItemService {
     }
 
     public List<ItemDto> itemList() {
-        return null;
+        return itemRepository.findAll().stream().map(ItemDto::new).collect(Collectors.toList());
     }
 
     public Item findById(long id) {

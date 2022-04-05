@@ -25,6 +25,12 @@ public class ItemPurchase {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_Id", nullable = false)
+    private User user;
+
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_detail_id", nullable = false)
     private ItemDetail itemDetail;
 
