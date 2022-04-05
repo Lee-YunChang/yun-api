@@ -1,10 +1,7 @@
 package com.yunapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -53,4 +50,10 @@ public class Item {
         this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
     }
 
+    @Builder
+    public Item(String itemName, Long itemPrice,String itemNumber){
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemNumber = itemNumber;
+    }
 }

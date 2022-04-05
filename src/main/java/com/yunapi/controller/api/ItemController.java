@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Tag(name = "Item", description = "상품")
 @RequiredArgsConstructor
@@ -36,20 +37,23 @@ public class ItemController {
 
         Pageable pageable =  PageRequest.of(page, size, Sort.Direction.DESC,"id");
 
-        List<ItemDto> itemList = itemService.itemList();
+        List<ItemDto> itemList = itemService.itemList(itemSearch, pageable);
         return  ResponseEntity.ok().body(itemList);
     }
 
     @GetMapping(value = "/{id}")    //Id로 select
-    public ResponseEntity<Item> findById(@PathVariable("id") long id){
-        Item item  = itemService.findById(id);
-        return ResponseEntity.ok().body(item);
+    public ResponseEntity<ItemDto> findById(@PathVariable("id") long id){
+        Optional<ItemDto> opItemDto = itemService.findById(id);
+        if(opItemDto.isPresent()) {
+            return ResponseEntity.ok().body(opItemDto.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping(value = "/save")   //Save
-    public ResponseEntity<?> save(@RequestBody MemberDto memberDto){
+    public ResponseEntity<?> save(@RequestBody ItemDto itemDto){
 
-        return ResponseEntity.ok().body(itemService.save(memberDto));
+        return ResponseEntity.ok().body(itemService.save(itemDto));
     }
 
     @DeleteMapping(value = "/delete/{id}")  //Delete
@@ -58,7 +62,7 @@ public class ItemController {
     }
 
     @PatchMapping(value = "/update/{id}")    //Update
-    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody MemberDto memberDto){
-        return ResponseEntity.ok().body(itemService.update(id,memberDto));
+    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody ItemDto itemDto){
+        return ResponseEntity.ok().body(itemService.update(id,itemDto));
     }
 }
