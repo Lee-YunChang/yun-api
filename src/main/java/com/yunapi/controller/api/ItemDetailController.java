@@ -1,14 +1,9 @@
 package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDetailDto;
-import com.yunapi.domain.dto.ItemDetailDto;
-import com.yunapi.domain.search.ItemSearch;
 import com.yunapi.service.api.ItemDetailService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("/itemDetail")
 public class ItemDetailController {
 
-    private ItemDetailService itemDetailService;
+    private final ItemDetailService itemDetailService;
 
     @GetMapping(value = "/count")
     public ResponseEntity<?> count(){

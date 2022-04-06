@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ItemPurchaseController {
 
-    private ItemPurchaseService itemPurchaseService;
+    private final ItemPurchaseService itemPurchaseService;
 }
