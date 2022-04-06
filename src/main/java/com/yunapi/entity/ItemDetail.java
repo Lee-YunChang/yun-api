@@ -3,6 +3,7 @@ package com.yunapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -33,7 +34,7 @@ public class ItemDetail {
 
     private String color;
 
-    private Integer item_inventory;
+    private Integer itemInventory;
 
     private String status;
 
@@ -58,4 +59,11 @@ public class ItemDetail {
         this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
     }
 
+    @Builder
+    public ItemDetail(Item item, String size, String color, Integer itemInventory){
+        this.item = item;
+        this.size = size;
+        this.color = color;
+        this.itemInventory = itemInventory;
+    }
 }

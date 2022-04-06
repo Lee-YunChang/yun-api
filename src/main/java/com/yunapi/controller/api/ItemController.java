@@ -25,7 +25,6 @@ public class ItemController {
 
     private final ItemService itemService;
 
-
     @GetMapping(value = "/count")
     public ResponseEntity<?> count(@ModelAttribute ItemSearch search){
         return ResponseEntity.ok().body(itemService.count(search));
