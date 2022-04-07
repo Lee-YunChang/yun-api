@@ -8,14 +8,15 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
-@Getter
-@Setter
+@Getter @Setter
 @Table(name = "item")
 @Entity
 @DynamicUpdate
-@DynamicInsert
+@NoArgsConstructor
 public class Item {
 
     @Id
@@ -30,6 +31,12 @@ public class Item {
     private String itemNumber;
 
     private String delYn;
+
+    @ToString.Exclude
+    @JoinColumn(name = "item_id")
+    @OneToMany
+    private List<ItemDetail> itemDetails = new ArrayList<>();
+
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     @Column(name ="create_timestamp")
