@@ -30,7 +30,7 @@ public class ItemSpecs {
             @Override
             public Predicate toPredicate(Root<Item> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 return StringUtils.isBlank(itemName) ? null :
-                        criteriaBuilder.like(root.get("ItemName"), '%' + itemName +'%');
+                        criteriaBuilder.like(root.get("itemName"), '%' + itemName +'%');
             }
         };
     }

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class ItemService {
 
-    ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public long count(ItemSearch search) {
         return 0;

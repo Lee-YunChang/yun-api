@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @DynamicUpdate
-@DynamicInsert
+@NoArgsConstructor
 public class ItemDetail {
 
     @Id
@@ -25,7 +26,7 @@ public class ItemDetail {
     @Column(updatable = false, nullable = false)
     private Long id;
 
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
