@@ -18,8 +18,7 @@ public class ItemSearch {
     private Long priceTo;
 
     public Specification<Item> toSpecification() {
-        return  Specification.where(ItemSpecs.idEquals(id))
-                .and(ItemSpecs.ItemNameLike(itemName))
+        return  Specification.where(ItemSpecs.ItemNameLike(itemName))
                 .and(ItemSpecs.ItemNumberLike(itemNumber))
                 .and(ItemSpecs.itemPriceGreaterThanOrEqualTo(priceFrom))
                 .and(ItemSpecs.itemPriceLessThanOrEqualTo(priceTo));
