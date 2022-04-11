@@ -2,6 +2,7 @@ package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDto;
 import com.yunapi.domain.dto.MemberDto;
+import com.yunapi.domain.request.ItemRequest;
 import com.yunapi.domain.search.ItemSearch;
 import com.yunapi.domain.search.UserSearch;
 import com.yunapi.entity.Item;
@@ -50,9 +51,9 @@ public class ItemController {
     }
 
     @PostMapping(value = "/save")   //Save
-    public ResponseEntity<?> save(@RequestBody ItemDto itemDto){
+    public ResponseEntity<?> save(@RequestBody ItemRequest itemRequest){
 
-        return ResponseEntity.ok().body(itemService.save(itemDto));
+        return ResponseEntity.ok().body(itemService.save(itemRequest));
     }
 
     @DeleteMapping(value = "/delete/{id}")  //Delete

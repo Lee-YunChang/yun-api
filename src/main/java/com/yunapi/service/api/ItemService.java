@@ -2,6 +2,7 @@ package com.yunapi.service.api;
 
 import com.yunapi.domain.dto.ItemDto;
 import com.yunapi.domain.dto.MemberDto;
+import com.yunapi.domain.request.ItemRequest;
 import com.yunapi.domain.search.ItemSearch;
 import com.yunapi.entity.Item;
 import com.yunapi.repository.ItemRepository;
@@ -36,11 +37,11 @@ public class ItemService {
     }
 
     @Transactional
-    public int save(ItemDto itemDto) {
+    public int save(ItemRequest value) {
         Item.ItemBuilder builder = Item.builder();
-        if(StringUtils.isNotBlank(itemDto.getItemName())) builder.itemName(itemDto.getItemName());
-        if(itemDto != null) builder.itemPrice(itemDto.getItemPrice());
-        if(StringUtils.isNotBlank(itemDto.getItemNumber())) builder.itemNumber(itemDto.getItemNumber());
+        if(StringUtils.isNotBlank(value.getItemName())) builder.itemName(value.getItemName());
+        if(value != null) builder.itemPrice(value.getItemPrice());
+        if(StringUtils.isNotBlank(value.getItemNumber())) builder.itemNumber(value.getItemNumber());
         return itemRepository.save(builder.build())!= null ? 1 : 0 ;
     }
 

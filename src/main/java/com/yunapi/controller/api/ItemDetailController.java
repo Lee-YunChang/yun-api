@@ -1,6 +1,7 @@
 package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDetailDto;
+import com.yunapi.domain.request.ItemDetailRequest;
 import com.yunapi.service.api.ItemDetailService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +41,9 @@ public class ItemDetailController {
     }
 
     @PostMapping(value = "/save")   //Save
-    public ResponseEntity<?> save(@RequestBody ItemDetailDto ItemDetailDto){
+    public ResponseEntity<?> save(@RequestBody ItemDetailRequest itemDetailRequest){
 
-        return ResponseEntity.ok().body(itemDetailService.save(ItemDetailDto));
+        return ResponseEntity.ok().body(itemDetailService.save(itemDetailRequest));
     }
 
     @DeleteMapping(value = "/delete/{id}")  //Delete

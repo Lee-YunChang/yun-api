@@ -2,6 +2,7 @@ package com.yunapi.service.api;
 
 import com.yunapi.domain.dto.ItemDetailDto;
 import com.yunapi.domain.dto.ItemDto;
+import com.yunapi.domain.request.ItemDetailRequest;
 import com.yunapi.domain.search.ItemSearch;
 import com.yunapi.entity.Item;
 import com.yunapi.entity.ItemDetail;
@@ -36,12 +37,12 @@ public class ItemDetailService {
     }
 
     @Transactional
-    public int save(ItemDetailDto itemDetailDto) {
+    public int save(ItemDetailRequest value) {
         ItemDetail.ItemDetailBuilder builder = ItemDetail.builder();
-        if (itemDetailDto.getItem() != null) builder.item(itemDetailDto.getItem());
-        if (StringUtils.isNotBlank(itemDetailDto.getColor())) builder.color(itemDetailDto.getColor());
-        if (StringUtils.isNotBlank(itemDetailDto.getSize())) builder.size(itemDetailDto.getSize());
-        if (itemDetailDto.getItemInventory() != null) builder.itemInventory(itemDetailDto.getItemInventory());
+        if (value.getItem() != null) builder.item(value.getItem());
+        if (StringUtils.isNotBlank(value.getColor())) builder.color(value.getColor());
+        if (StringUtils.isNotBlank(value.getSize())) builder.size(value.getSize());
+        if (value.getItemInventory() != null) builder.itemInventory(value.getItemInventory());
         return itemDetailRepository.save(builder.build()) != null ? 1 : 0;
     }
 
