@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @DynamicUpdate
 @NoArgsConstructor
-public class ItemDetail {
+public class ItemOption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,7 +61,7 @@ public class ItemDetail {
     }
 
     @Builder
-    public ItemDetail(Item item, String size, String color, Integer itemInventory){
+    public ItemOption(Item item, String size, String color, Integer itemInventory){
         this.item = item;
         this.size = size;
         this.color = color;

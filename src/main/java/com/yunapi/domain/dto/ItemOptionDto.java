@@ -1,13 +1,13 @@
 package com.yunapi.domain.dto;
 
 import com.yunapi.entity.Item;
-import com.yunapi.entity.ItemDetail;
+import com.yunapi.entity.ItemOption;
 import com.yunapi.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class ItemDetailDto {
+public class ItemOptionDto {
 
     private Long id;
     private Item item;
@@ -19,7 +19,7 @@ public class ItemDetailDto {
     private String createTimestamp;
     private String updateTimestamp;
 
-    public ItemDetailDto(ItemDetail a){
+    public ItemOptionDto(ItemOption a){
         this.id = a.getId();
         this.item = a.getItem();
         this.size = a.getSize();

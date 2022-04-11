@@ -35,7 +35,7 @@ public class Item {
     @ToString.Exclude
     @JoinColumn(name = "item_id")
     @OneToMany
-    private List<ItemDetail> itemDetails = new ArrayList<>();
+    private List<ItemOption> itemOptions = new ArrayList<>();
 
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")

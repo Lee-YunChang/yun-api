@@ -1,28 +1,26 @@
 package com.yunapi.domain.dto;
 
-import com.yunapi.entity.Item;
+import com.yunapi.entity.ItemOption;
+import com.yunapi.entity.ItemPurchase;
+import com.yunapi.entity.User;
 import com.yunapi.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-
 @Getter @Setter
-public class ItemDto {
+public class ItemPurchaseDto {
 
     private Long id;
-    private String itemName;
-    private Long itemPrice;
-    private String itemNumber;
+    private User user;
+    private ItemOption itemOption;
     private String delYn;
     private String createTimestamp;
     private String updateTimestamp;
 
-    public ItemDto(Item a){
+    public ItemPurchaseDto(ItemPurchase a){
         this.id = a.getId();
-        this.itemName = a.getItemName();
-        this.itemPrice = a.getItemPrice();
-        this.itemNumber = a.getItemNumber();
+        this.user = a.getUser();
+        this.itemOption = a.getItemOption();
         this.delYn = a.getDelYn();
         if(a.getCreateTimestamp() != null)
             this.createTimestamp = DateUtils.SDF2.format(a.getCreateTimestamp());

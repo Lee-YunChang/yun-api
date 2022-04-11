@@ -2,7 +2,9 @@ package com.yunapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @DynamicUpdate
-@DynamicInsert
+@NoArgsConstructor
 public class ItemPurchase {
 
     @Id
@@ -31,8 +33,8 @@ public class ItemPurchase {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_detail_id", nullable = false)
-    private ItemDetail itemDetail;
+    @JoinColumn(name = "item_option_id", nullable = false)
+    private ItemOption itemOption;
 
     private String delYn;
 
@@ -55,4 +57,10 @@ public class ItemPurchase {
         this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
     }
 
+
+    @Builder
+    public ItemPurchase(User user, ItemOption itemOption){
+        this.user = user;
+        this.itemOption = itemOption;
+    }
 }

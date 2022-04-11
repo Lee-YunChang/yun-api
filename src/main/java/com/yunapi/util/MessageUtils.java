@@ -6,7 +6,7 @@ public class MessageUtils {
 	
 	public final static String INVALID_ADMIN_API_KEY = "유효하지 않은 관리자 api-key 입니다";
 	public final static String INVALID_ADMIN_USERNAME = "존재하지 않는 관리자 id(username) 입니다.";
-	public final static String INVALID_USER_ID = "존재하지 않는 bankq_user 입니다.";
+	public final static String INVALID_USER_ID = "존재하지 않는 user 입니다.";
 	public final static String INVALID_USER = "일치하는 user가 없습니다. (s-Id 또는 s-token 오류)";
 	public final static String INVALID_MYDATA_USER_ID = "존재하지 않는 mydata_user 입니다.";
 	public final static String INVALID_BT_ID = "존재하지 않는 소비분류 id(btId) 입니다.";

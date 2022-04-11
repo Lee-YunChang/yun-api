@@ -1,8 +1,9 @@
 package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDetailDto;
+import com.yunapi.domain.dto.ItemOptionDto;
 import com.yunapi.domain.request.ItemDetailRequest;
-import com.yunapi.service.api.ItemDetailService;
+import com.yunapi.service.api.ItemOptionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/itemDetail")
 public class ItemDetailController {
 
-    private final ItemDetailService itemDetailService;
+    private final ItemOptionService itemDetailService;
 
     @GetMapping(value = "/count")
     public ResponseEntity<?> count(){
@@ -25,15 +26,15 @@ public class ItemDetailController {
     }
 
     @GetMapping(value = "")  //List select
-    public ResponseEntity<List<ItemDetailDto>> itemDetailList(){
+    public ResponseEntity<List<ItemOptionDto>> itemDetailList(){
 
-        List<ItemDetailDto> itemDetailDtoList = itemDetailService.itemList();
+        List<ItemOptionDto> itemDetailDtoList = itemDetailService.itemList();
         return  ResponseEntity.ok().body(itemDetailDtoList);
     }
 
     @GetMapping(value = "/{id}")    //Id로 select
-    public ResponseEntity<ItemDetailDto> findById(@PathVariable("id") long id){
-        Optional<ItemDetailDto> oitemDetailDto = itemDetailService.findById(id);
+    public ResponseEntity<ItemOptionDto> findById(@PathVariable("id") long id){
+        Optional<ItemOptionDto> oitemDetailDto = itemDetailService.findById(id);
         if(oitemDetailDto.isPresent()) {
             return ResponseEntity.ok().body(oitemDetailDto.get());
         }
@@ -52,7 +53,7 @@ public class ItemDetailController {
     }
 
     @PatchMapping(value = "/update/{id}")    //Update
-    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody ItemDetailDto ItemDetailDto){
+    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody ItemOptionDto ItemDetailDto){
         return ResponseEntity.ok().body(itemDetailService.update(id,ItemDetailDto));
     }
 }

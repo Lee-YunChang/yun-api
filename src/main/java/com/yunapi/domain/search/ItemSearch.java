@@ -11,7 +11,6 @@ import org.springframework.data.jpa.domain.Specification;
 @Getter @Setter
 public class ItemSearch {
 
-    private Long id;
     private String itemName;
     private String itemNumber;
     private Long priceFrom;
