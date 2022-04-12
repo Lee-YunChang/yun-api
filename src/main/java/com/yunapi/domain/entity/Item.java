@@ -1,42 +1,41 @@
-package com.yunapi.entity;
+package com.yunapi.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.DynamicInsert;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@Getter
-@Setter
+
+@Getter @Setter
+@Table(name = "item")
 @Entity
 @DynamicUpdate
 @NoArgsConstructor
-public class ItemPurchase {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     private Long id;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_Id", nullable = false)
-    private User user;
+    private String itemName;
 
+    private Long itemPrice;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_option_id", nullable = false)
-    private ItemOption itemOption;
+    private String itemNumber;
 
     private String delYn;
+
+    @ToString.Exclude
+    @JoinColumn(name = "item_id")
+    @OneToMany
+    private List<ItemOption> itemOptions = new ArrayList<>();
+
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     @Column(name ="create_timestamp")
@@ -57,10 +56,10 @@ public class ItemPurchase {
         this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
     }
 
-
     @Builder
-    public ItemPurchase(User user, ItemOption itemOption){
-        this.user = user;
-        this.itemOption = itemOption;
+    public Item(String itemName, Long itemPrice,String itemNumber){
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemNumber = itemNumber;
     }
 }

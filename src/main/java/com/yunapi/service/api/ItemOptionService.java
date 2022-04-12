@@ -2,7 +2,7 @@ package com.yunapi.service.api;
 
 import com.yunapi.domain.dto.ItemOptionDto;
 import com.yunapi.domain.request.ItemDetailRequest;
-import com.yunapi.entity.ItemOption;
+import com.yunapi.domain.entity.ItemOption;
 import com.yunapi.repository.ItemOptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

@@ -1,7 +1,7 @@
 package com.yunapi.domain.search;
 
 import com.yunapi.domain.specs.UserSpecs;
-import com.yunapi.entity.User;
+import com.yunapi.domain.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.Specification;

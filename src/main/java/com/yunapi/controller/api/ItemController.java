@@ -1,11 +1,9 @@
 package com.yunapi.controller.api;
 
 import com.yunapi.domain.dto.ItemDto;
-import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.domain.request.ItemRequest;
 import com.yunapi.domain.search.ItemSearch;
-import com.yunapi.domain.search.UserSearch;
-import com.yunapi.entity.Item;
+import com.yunapi.domain.entity.Item;
 import com.yunapi.service.api.ItemService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

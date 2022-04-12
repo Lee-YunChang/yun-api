@@ -1,8 +1,8 @@
 package com.yunapi.domain.dto;
 
-import com.yunapi.entity.ItemOption;
-import com.yunapi.entity.ItemPurchase;
-import com.yunapi.entity.User;
+import com.yunapi.domain.entity.ItemOption;
+import com.yunapi.domain.entity.ItemPurchase;
+import com.yunapi.domain.entity.User;
 import com.yunapi.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;

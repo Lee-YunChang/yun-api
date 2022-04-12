@@ -1,4 +1,4 @@
-package com.yunapi.entity;
+package com.yunapi.domain.entity;
 
 
 import lombok.Getter;

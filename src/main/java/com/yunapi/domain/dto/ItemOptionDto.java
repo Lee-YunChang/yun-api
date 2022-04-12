@@ -1,7 +1,7 @@
 package com.yunapi.domain.dto;
 
-import com.yunapi.entity.Item;
-import com.yunapi.entity.ItemOption;
+import com.yunapi.domain.entity.Item;
+import com.yunapi.domain.entity.ItemOption;
 import com.yunapi.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.yunapi.domain.response;
 
 import com.yunapi.domain.dto.UserDto;
-import com.yunapi.entity.User;
+import com.yunapi.domain.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 

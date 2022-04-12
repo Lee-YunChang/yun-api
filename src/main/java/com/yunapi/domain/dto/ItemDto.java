@@ -1,11 +1,9 @@
 package com.yunapi.domain.dto;
 
-import com.yunapi.entity.Item;
+import com.yunapi.domain.entity.Item;
 import com.yunapi.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.sql.Timestamp;
 
 @Getter @Setter
 public class ItemDto {

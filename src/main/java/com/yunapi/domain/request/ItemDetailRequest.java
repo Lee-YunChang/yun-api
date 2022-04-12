@@ -1,6 +1,6 @@
 package com.yunapi.domain.request;
 
-import com.yunapi.entity.Item;
+import com.yunapi.domain.entity.Item;
 import lombok.Data;
 
 @Data

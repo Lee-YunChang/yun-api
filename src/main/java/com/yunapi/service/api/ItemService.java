@@ -1,10 +1,9 @@
 package com.yunapi.service.api;
 
 import com.yunapi.domain.dto.ItemDto;
-import com.yunapi.domain.dto.MemberDto;
 import com.yunapi.domain.request.ItemRequest;
 import com.yunapi.domain.search.ItemSearch;
-import com.yunapi.entity.Item;
+import com.yunapi.domain.entity.Item;
 import com.yunapi.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

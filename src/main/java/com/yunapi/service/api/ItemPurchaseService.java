@@ -2,9 +2,9 @@ package com.yunapi.service.api;
 
 import com.yunapi.domain.dto.ItemPurchaseDto;
 import com.yunapi.domain.request.ItemPurchaseRequest;
-import com.yunapi.entity.ItemOption;
-import com.yunapi.entity.ItemPurchase;
-import com.yunapi.entity.User;
+import com.yunapi.domain.entity.ItemOption;
+import com.yunapi.domain.entity.ItemPurchase;
+import com.yunapi.domain.entity.User;
 import com.yunapi.exception.InvalidInputException;
 import com.yunapi.repository.ItemOptionRepository;
 import com.yunapi.repository.ItemPurchaseRepository;
