@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Tag(name = "Item", description = "상품")
+@Tag(name = "ItemPurchase", description = "상품 구매")
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/itemPurchase")
 public class ItemPurchaseController {
 
     private final ItemPurchaseService itemPurchaseService;
@@ -53,7 +54,7 @@ public class ItemPurchaseController {
         return ResponseEntity.ok().body(itemPurchaseService.save(itemPurchaseRequest));
     }
 
-    @DeleteMapping(value = "/delete/{id}")  //Delete
+    @DeleteMapping(value = "/del/{id}")  //Delete
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         return  ResponseEntity.ok().body(itemPurchaseService.delete(id));
     }

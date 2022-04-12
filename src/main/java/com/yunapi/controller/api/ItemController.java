@@ -56,7 +56,7 @@ public class ItemController {
         return ResponseEntity.ok().body(itemService.save(itemRequest));
     }
 
-    @DeleteMapping(value = "/delete/{id}")  //Delete
+    @DeleteMapping(value = "/del/{id}")  //Delete
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         return  ResponseEntity.ok().body(itemService.delete(id));
     }

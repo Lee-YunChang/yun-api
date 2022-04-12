@@ -1,6 +1,5 @@
 package com.yunapi.controller.api;
 
-import com.yunapi.domain.dto.ItemDetailDto;
 import com.yunapi.domain.dto.ItemOptionDto;
 import com.yunapi.domain.request.ItemDetailRequest;
 import com.yunapi.service.api.ItemOptionService;
@@ -47,7 +46,7 @@ public class ItemDetailController {
         return ResponseEntity.ok().body(itemDetailService.save(itemDetailRequest));
     }
 
-    @DeleteMapping(value = "/delete/{id}")  //Delete
+    @DeleteMapping(value = "/del/{id}")  //Delete
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         return  ResponseEntity.ok().body(itemDetailService.delete(id));
     }
