@@ -1,5 +1,7 @@
 package com.yunapi.domain;
 
+import com.yunapi.domain.entity.Admin;
+import com.yunapi.domain.entity.AdminRole;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
