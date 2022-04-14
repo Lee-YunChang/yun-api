@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer, Filter {
 	        "classpath:/static/"
 	        };
 	
-	@Value("${bankq-api.image-upload-path}")
+	@Value("${yun-api.image-upload-path}")
     private String imageUploadPath;
 	
 	@Override

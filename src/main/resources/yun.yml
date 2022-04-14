@@ -9,5 +9,4 @@ yun-api:
   slack:
     key: 'TKABXTJ3Z/BPHM5J5DM/WuMqtfHRKyZkZ196pQtHHOAT'
     channel: '#c-jini'
-  image:
-    upload-path: C:/yun_images
+  image-upload-path: 'C:/yun_images'
